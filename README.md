@@ -19,8 +19,7 @@ SPECIFICTIONS:
 • P2P Port:           8181
 • RPC Port:           8182
 • Prune height:   1,000,000
-• Max supply:     12,500,000  
-  -because of 1/10th of all winter athletes in the world would have one coin [https://snowsports.org/report-on-global-ski-snowboard-participation-released/]
+• Max supply:     12,500,000 *  
 • Premined:  625,000 (5 %)
   - for development , marketing, and exchange listings 
 • Hybrid layer 2 PoW/PoS consensus with bonded validator system (masternodes)
@@ -92,4 +91,6 @@ Translations are periodically pulled from Transifex and merged into the git repo
 
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
+
+*-because of 1/10th of all winter athletes in the world would have one coin [https://snowsports.org/report-on-global-ski-snowboard-participation-released/]
 
