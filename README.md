@@ -12,14 +12,23 @@ Coin specs
 
 SPECIFICTIONS:
 Name:               Skicoin  
+
 Algorithm:          Scrypt Proof of Work
+
 Block:              60 seconds using Dark Gravity Wave(24) 
+
 Ticker:             SKI
+
 Block size:         6mb
+
 P2P Port:           8181
+
 RPC Port:           8182
+
 Prune height:   1,000,000
+
 Max supply:     12,500,000 *  
+
 Premined:  625,000 (5 %)
   - for development , marketing, and exchange listings 
 Hybrid layer 2 PoW/PoS consensus with bonded validator system (masternodes)
