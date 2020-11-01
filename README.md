@@ -11,31 +11,27 @@ What is Skicoin?
 Coin specs
 
 SPECIFICTIONS:
-
-
 • Name:               Skicoin 
-• Algorithm:          Scrypt
+• Algorithm:          Scrypt Proof of Work
 • Block:              60 seconds using Dark Gravity Wave(24) 
 • Ticker:             SKI
 • Block size:         6mb
 • P2P Port:           8181
 • RPC Port:           8182
 • Prune height:   1,000,000
-• Max supply:     12,500,000  Because of 1/10th of all skiers in the world [https://snowsports.org/report-on-global-ski-snowboard-participation-released/]
+• Max supply:     12,500,000  
+  -because of 1/10th of all winter athletes in the world would have one coin [https://snowsports.org/report-on-global-ski-snowboard-participation-released/]
 • Premined:  625,000 (5 %)
-block reward : 25
-Masternode 10500
-
-
-- Rewards are variable:
-  - 18/27 percent cycle to masternodes
-  - remainder to miner
-  - miner and masternode share fees 50:50
-
-- Scrypt Proof of Work
-- Mineable either exclusively or via merge-mining any Scrypt PoW coin
-- Skicoin data service fees burned
-- Masternode collateral requirement: 10500 Skicoins
+  - for development , marketing, and exchange listings 
+• Hybrid layer 2 PoW/PoS consensus with bonded validator system (masternodes)
+• Decentralized identity reservation, ownership, and exchange
+• Digital certificate storage, ownership, and exchange
+• Masternode collateral requirement: 10500
+• block reward : 25
+  - Rewards are variable:
+    height 0 to 288 = 75% to masternode
+    height 289 to 1439 = 30% to masternode
+    1440 and higher = 20% to maasternode
 
 For more information, as well as an immediately useable, binary version of
 the Skicoin client sofware, see https://www.abseits.ski
