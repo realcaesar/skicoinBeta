@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/skicoincore/.skicoincore" ]; then
+	SKICOIND_DEFAULT_DATADIR="/var/lib/skicoincore/.skicoincore"
+else
+	SKICOIND_DEFAULT_DATADIR="/var/lib/skicoind"
+fi
+
+SKICOIND_CONFIGFILE=${SKICOIND_CONFIGFILE:-/etc/skicoincore/skicoin.conf}
+SKICOIND_PIDDIR=${SKICOIND_PIDDIR:-/var/run/skicoind}
+SKICOIND_PIDFILE=${SKICOIND_PIDFILE:-${SKICOIND_PIDDIR}/skicoind.pid}
+SKICOIND_DATADIR=${SKICOIND_DATADIR:-${SKICOIND_DEFAULT_DATADIR}}
+SKICOIND_USER=${SKICOIND_USER:-${SKICOIN_USER:-skicoincore}}
+SKICOIND_GROUP=${SKICOIND_GROUP:-skicoincore}
+SKICOIND_BIN=${SKICOIND_BIN:-/usr/bin/skicoind}
+SKICOIND_NICE=${SKICOIND_NICE:-${NICELEVEL:-0}}
+SKICOIND_OPTS="${SKICOIND_OPTS:-${SKICOIN_OPTS}}"
+
+name="Skicoin Core Daemon"
+description="Skicoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/skicoind"
+command_args="-pid=\"${SKICOIND_PIDFILE}\" \
+		-conf=\"${SKICOIND_CONFIGFILE}\" \
+		-datadir=\"${SKICOIND_DATADIR}\" \
+		-daemon \
+		${SKICOIND_OPTS}"
+
+required_files="${SKICOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${SKICOIND_USER} \
+			-N ${SKICOIND_NICE} -w 2000"
+pidfile="${SKICOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${SKICOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${SKICOIND_USER}:${SKICOIND_GROUP}" \
+	"${SKICOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${SKICOIND_USER}:${SKICOIND_GROUP}" \
+	"${SKICOIND_PIDDIR}"
+
+	checkpath -f \
+	-o ${SKICOIND_USER}:${SKICOIND_GROUP} \
+	-m 0660 \
+	${SKICOIND_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${SKICOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run skicoind."
+		eerror "The setting must appear in ${SKICOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following"
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Skicoin Core Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

@@ -1,0 +1,6 @@
+usr/local/bin/skicoin-qt usr/bin
+share/pixmaps/skicoin32.xpm usr/share/pixmaps
+share/pixmaps/skicoin16.xpm usr/share/pixmaps
+share/pixmaps/skicoin128.png usr/share/pixmaps
+debian/skicoin-qt.desktop usr/share/applications
+debian/skicoin-qt.protocol usr/share/kde4/services/

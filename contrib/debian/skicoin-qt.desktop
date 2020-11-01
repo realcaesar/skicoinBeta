@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Skicoin
+Comment=Skicoin P2P Cryptocurrency
+Comment[fr]=Skicoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Skicoin, eşten eşe kriptografik sanal para birimi
+Exec=skicoin-qt %u
+Terminal=false
+Type=Application
+Icon=skicoin128
+MimeType=x-scheme-handler/skicoin;
+Categories=Office;Finance;

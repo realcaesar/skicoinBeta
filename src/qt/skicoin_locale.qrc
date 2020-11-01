@@ -1,0 +1,20 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/skicoin_bg.qm</file>
+        <file alias="de">locale/skicoin_de.qm</file>
+        <file alias="en">locale/skicoin_en.qm</file>
+        <file alias="es">locale/skicoin_es.qm</file>
+        <file alias="fi">locale/skicoin_fi.qm</file>
+        <file alias="fr">locale/skicoin_fr.qm</file>
+        <file alias="it">locale/skicoin_it.qm</file>
+        <file alias="ja">locale/skicoin_ja.qm</file>
+        <file alias="pl">locale/skicoin_pl.qm</file>
+        <file alias="pt">locale/skicoin_pt.qm</file>
+        <file alias="ru">locale/skicoin_ru.qm</file>
+        <file alias="sk">locale/skicoin_sk.qm</file>
+        <file alias="sv">locale/skicoin_sv.qm</file>
+        <file alias="vi">locale/skicoin_vi.qm</file>
+        <file alias="zh_CN">locale/skicoin_zh_CN.qm</file>
+        <file alias="zh_TW">locale/skicoin_zh_TW.qm</file>
+    </qresource>
+</RCC>

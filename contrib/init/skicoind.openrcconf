@@ -1,0 +1,33 @@
+# /etc/conf.d/skicoind: config file for /etc/init.d/skicoind
+
+# Config file location
+#SKICOIND_CONFIGFILE="/etc/skicoincore/skicoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $SKICOIND_USER)
+#SKICOIND_PIDDIR="/var/run/skicoind"
+
+# What filename to give the pidfile
+#SKICOIND_PIDFILE="${SKICOIND_PIDDIR}/skicoind.pid"
+
+# Where to write skicoind data (be mindful that the blockchain is large)
+#SKICOIND_DATADIR="/var/lib/skicoind"
+
+# User and group to own skicoind process
+#SKICOIND_USER="skicoincore"
+#SKICOIND_GROUP="skicoincore"
+
+# Path to skicoind executable
+#SKICOIND_BIN="/usr/bin/skicoind"
+
+# Nice value to run skicoind under
+#SKICOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+SKICOIND_OPTS="-disablewallet"
+
+# The timeout in seconds OpenRC will wait for skicoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+SKICOIND_SIGTERM_TIMEOUT=60

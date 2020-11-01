@@ -1,0 +1,22 @@
+[Unit]
+Description=Skicoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=skicoincore
+Group=skicoincore
+
+Type=forking
+PIDFile=/var/lib/skicoind/skicoind.pid
+ExecStart=/usr/bin/skicoind -daemon -pid=/var/lib/skicoind/skicoind.pid \
+-conf=/etc/skicoincore/skicoin.conf -datadir=/var/lib/skicoind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
