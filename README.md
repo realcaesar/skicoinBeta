@@ -1,3 +1,5 @@
+This Project was the improved Version from Skicoin1, and was used for further Testing Purposes!
+
 Skicoin Core staging tree 
 =========================
 
